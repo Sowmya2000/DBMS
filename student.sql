@@ -1,0 +1,11 @@
+create table student1(Regno varchar2(15),Name varchar2(15),Major varchar2(15),Bdate date,primary key(Regno));
+create table course(course_id int,cname varchar2(15),dept varchar2(15),primary key(course_id));
+create table text(isbn int,book_title varchar2(30),publisher varchar2(15),author varchar2(15),primary key(isbn));
+create table bookadoption(course_id int,sem int,isbn int,primary key(course_id,isbn),foreign key(course_id)references course(course_id)on delete cascade,foreign key(isbn)references text(isbn)on delete cascade);
+create table enroll(Regno varchar2(15),course_id int,sem int,marks int,primary key(Regno,course_id),foreign key(Regno)references student1(Regno)on delete cascade,foreign key(course_id)references course(course_id)on delete cascade);
+insert into  student1 values('&Regno','&Name','&Major','&Bdate');
+select * from student1;
+insert into course values(&course_id,'&cname','&dept');
+insert into text values(&isb,'&book_title','&publisher','&author');
+insert into bookadoption values(&course_id,&sem,&isbn);
+insert into  enroll values('&Regno',&course_id,&sem,&marks);
